@@ -172,7 +172,10 @@ resource "aws_security_group" "sg-webserver" {
         from_port = 22
         to_port = 22
         protocol = "tcp"
-        cidr_blocks = ["190.236.204.162/32"]
+        cidr_blocks = [
+                        "190.236.204.162/32", #Home
+                        "200.37.217.53/32" #FP
+                    ]
     }
 
      tags = {

@@ -14,6 +14,7 @@ resource "aws_instance" "web-server-1" {
                             "${aws_security_group.sg-webserver.id}",
                           ]
   
+  
   key_name = "${aws_key_pair.ec2-key.key_name}"
 
   
