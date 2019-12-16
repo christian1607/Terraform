@@ -1,6 +1,7 @@
 locals {
   service_name = "aws"
   owner        = "Christian Altamirano"
-  project      = "terraform-aws"  
+  project      = "terraform-aws"
+  enviroment   = "dev"
 
 }

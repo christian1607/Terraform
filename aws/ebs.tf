@@ -6,7 +6,7 @@ resource "aws_ebs_volume" "volume-1" {
     
      tags = {
         Name = "volume-1"
-        Env  = "Dev"
+        Env  = "${local.enviroment}"
         Project = "${local.project}"
         Owner = "${local.owner}"
     }

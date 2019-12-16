@@ -23,3 +23,11 @@ variable "access_key" {
 variable "secret_key" {
   type = string
 }
+
+variable "ami_web_server" {
+  type = string  
+}
+
+variable "instance_type_web_server"{
+  type = string
+}
