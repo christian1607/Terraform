@@ -181,3 +181,32 @@ resource "aws_security_group" "sg-webserver" {
         Owner = "${local.owner}"
     }
 }
+
+
+resource "aws_security_group" "sg-elb" {
+    
+    name = "sg_elb"
+    vpc_id = "${aws_vpc.vpc-us.id}"
+
+    egress {
+        from_port = 0
+        to_port = 0
+        protocol = "-1"
+        cidr_blocks = ["0.0.0.0/0"]                                                                       
+    }
+
+    ingress {
+        from_port = 80
+        to_port = 80
+        protocol = "tcp"
+        cidr_blocks = ["0.0.0.0/0"]    
+    }
+
+    
+    tags = {
+        Name = "sg-elb"
+        Env  = "${local.enviroment}"
+        Project = "${local.project}"
+        Owner = "${local.owner}"
+    }
+}

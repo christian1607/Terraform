@@ -1,3 +1,27 @@
+resource "aws_elb" "load_balancer" {
+  name = "tf-load-balancer"
+  # availability_zones = ["us-east-1a"]
+  subnets         = ["${aws_subnet.sn-us-east-1a-public.id}"]
+  security_groups = ["${aws_security_group.sg-elb.id}"]
+  depends_on      = ["aws_security_group.sg-elb"]
+
+  listener {
+    lb_port           = 80
+    lb_protocol       = "HTTP"
+    instance_port     = 80
+    instance_protocol = "HTTP"
+
+  }
+  health_check {
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+    timeout             = 3
+    interval            = 30
+    target              = "HTTP:80/"
+  }
+}
+
+
 resource "aws_launch_configuration" "launch_config" {
   name          = "launch_config_web_server"
   image_id      = "${var.ami_web_server}"
@@ -17,9 +41,9 @@ resource "aws_autoscaling_group" "web_server_autoscaling" {
   min_size                  = "2"
   launch_configuration      = "${aws_launch_configuration.launch_config.name}"
   health_check_grace_period = "300"
-  health_check_type         = "EC2"
-
-  vpc_zone_identifier = ["${aws_subnet.sn-us-east-1a-public.id}"]
+  health_check_type         = "ELB"
+  load_balancers            = ["${aws_elb.load_balancer.name}"]
+  vpc_zone_identifier       = ["${aws_subnet.sn-us-east-1a-public.id}"]
 
 
   tag {
@@ -56,4 +80,9 @@ resource "aws_autoscaling_policy" "cpu_utilization" {
   cooldown               = "300"
   policy_type            = "SimpleScaling"
 
+}
+
+
+output "elb_dns_name" {
+  value = "${aws_elb.load_balancer.dns_name}"
 }
