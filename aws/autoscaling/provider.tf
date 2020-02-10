@@ -1,13 +1,14 @@
-terraform{
-  required_providers{
+terraform {
+  required_providers {
     aws = "~> 2.0"
   }
 
- # backend "s3" {
-  #  bucket = "${var.terraform_state_repo}"
-  #  key    = "path/to/my/key"
-  #  region = "us-east-1"
- # }
+  backend "s3" {
+    bucket = "tf-autoscaling"
+    key    = "state/terraform.tfstate"
+    region = "us-east-1"
+    
+  }
 }
 
 #Default region
