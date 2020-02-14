@@ -27,7 +27,7 @@ resource "aws_launch_configuration" "launch_config" {
   image_id      = "${var.ami_web_server}"
   instance_type = "${var.instance_type_web_server}"
   key_name      = "${aws_key_pair.ec2-key.key_name}"
-  user_data     = "${file("../scripts/install_apache.sh")}"
+  user_data     = "${data.template_file.instalar_apache.rendered}"
   security_groups = [
     "${aws_security_group.sg-webserver.id}"
   ]
@@ -82,7 +82,3 @@ resource "aws_autoscaling_policy" "cpu_utilization" {
 
 }
 
-
-output "elb_dns_name" {
-  value = "${aws_elb.load_balancer.dns_name}"
-}

@@ -7,7 +7,7 @@ terraform {
     bucket         = "tf-autoscaling"
     key            = "state/terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "tf-scaling-lock"
+    #dynamodb_table = "tf-scaling-lock"
   }
 }
 
