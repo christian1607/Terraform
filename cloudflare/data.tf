@@ -1,4 +1,4 @@
-data "terraform_remote_state" "elb_tf" {
+/* data "terraform_remote_state" "elb_tf" {
 
   backend = "s3"
   config = {
@@ -7,3 +7,5 @@ data "terraform_remote_state" "elb_tf" {
     region = "us-east-1"
   }
 }
+
+*/
