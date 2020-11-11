@@ -11,7 +11,6 @@ resource "azurerm_resource_group" "rg_aks" {
   location = var.location
   tags = {
     Project     = local.project
-    Environment = local.enviroment
     CostCenter  = local.cost_center
     Owner       = local.createdby
   }
@@ -46,7 +45,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
     tags = {
       Project     = local.project
-      Environment = local.enviroment
       CostCenter  = local.cost_center
       Owner       = local.createdby
     }
@@ -99,7 +97,6 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
   tags = {
     Project     = local.project
-    Environment = local.enviroment
     CostCenter  = local.cost_center
     Owner       = local.createdby
   }
