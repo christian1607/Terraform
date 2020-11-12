@@ -1,21 +1,25 @@
 # Terraform
 
 
-This repo consists of a set of terraform configuration files.
+This repo consists of a set of terraform configuration files for differents providers.
 
 
 AWS:
-  - VPC
-  - RDS
-  - EC2
-  - AUTOSCALING
-  - ELB
+  - vpc
+  - rds
+  - ec2
+  - autoscaling
+  - elb
   
   
 CLOUDFLARE:
-  - cloudflare_record
+  - record
   - 
 
 AZURE
-  - AKS
-  - 
+  - Aks
+  - Aks NodePools
+
+TERRAFORM CLOUD
+  - Variables
+  - Workspace
