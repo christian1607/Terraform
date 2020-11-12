@@ -20,7 +20,7 @@ resource "tfe_workspace" "azure" {
   vcs_repo {
     identifier     = "christian1607/Terraform"
     branch         = "master"
-    oauth_token_id = "ot-r2UXFEGNcYP4hwyo"
+    oauth_token_id = var.tf_repo_token
   }
 
 }
