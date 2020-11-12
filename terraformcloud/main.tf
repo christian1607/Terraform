@@ -12,13 +12,13 @@ provider "tfe" {
 }
 
 resource "tfe_workspace" "azure" {
-  name              = "azure"
-  organization      = "caltamirano"
+  name              = var.tf_workspace
+  organization      = var.tf_organization
   auto_apply        = false
-  working_directory = "azure"
+  working_directory = var.tf_path_directory
 
   vcs_repo {
-    identifier     = "christian1607/Terraform"
+    identifier     = var.tf_repo_name
     branch         = "master"
     oauth_token_id = var.tf_repo_token
   }
@@ -121,39 +121,39 @@ resource "tfe_variable" "aks_sku" {
 
 
 resource "tfe_variable" "arm_client_id" {
-  key       = "ARM_CLIENT_ID"
-  value     = var.arm_client_id
-  category  = "env"
-  sensitive = true
+  key          = "ARM_CLIENT_ID"
+  value        = var.arm_client_id
+  category     = "env"
+  sensitive    = true
   workspace_id = tfe_workspace.azure.id
   description  = "ARM client ID for terraform cli"
 }
 
 
 resource "tfe_variable" "arm_client_secret" {
-  key       = "ARM_CLIENT_SECRET"
-  value     = var.arm_client_secret
-  category  = "env"
-  sensitive = true
+  key          = "ARM_CLIENT_SECRET"
+  value        = var.arm_client_secret
+  category     = "env"
+  sensitive    = true
   workspace_id = tfe_workspace.azure.id
   description  = "ARM secret ID for terraform cli"
 }
 
 resource "tfe_variable" "arm_tenant_id" {
-  key       = "ARM_TENANT_ID"
-  value     = var.arm_tenant_id
-  category  = "env"
-  sensitive = true
+  key          = "ARM_TENANT_ID"
+  value        = var.arm_tenant_id
+  category     = "env"
+  sensitive    = true
   workspace_id = tfe_workspace.azure.id
   description  = "ARM tenant for terraform cli"
 }
 
 
 resource "tfe_variable" "arm_suscription_id" {
-  key       = "ARM_SUBSCRIPTION_ID"
-  value     = var.arm_suscription_id
-  category  = "env"
-  sensitive = true
+  key          = "ARM_SUBSCRIPTION_ID"
+  value        = var.arm_suscription_id
+  category     = "env"
+  sensitive    = true
   workspace_id = tfe_workspace.azure.id
   description  = "ARM suscription ID for terraform cli"
 }
