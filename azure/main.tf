@@ -2,7 +2,7 @@
 terraform {
   required_providers {
     azurerm = {
-      source = "hashicorp/azurerm"
+      source  = "hashicorp/azurerm"
       version = "2.35.0"
     }
   }
@@ -10,24 +10,53 @@ terraform {
 
 
 provider "azurerm" {
-    
+
   environment = "public"
   features {}
 
 }
 
+
+module "azure_resource_group" {
+  source = "./modules/resource_group"
+
+  location            = var.location
+  project             = var.project
+  resource_group_name = var.resources_group_name
+  tags                = var.tags
+
+}
+
+
+module "azure_vnet" {
+  source = "./modules/vnet"
+
+  location                = var.location
+  resource_group_name    = var.resources_group_name
+  subnet_name = var.subnet_name
+  vnet_address_space      = var.vnet_address_space
+  subnet_address_prefixes = var.subnet_address_prefixes
+
+}
+
+
+
+
+
 module "aks" {
-  source                          = "./modules/aks"
+
+  source = "./modules/aks"
+
+  rg_aks_name                     = var.resources_group_name
   location                        = var.location
-  project                         = var.project
   node_pool_node_count            = var.node_pool_node_count
   node_vm_size                    = var.node_vm_size
   max_pods_per_node               = var.max_pods_per_node
-  enviroment                      = var.enviroment
   service_principal_client_id     = var.service_principal_client_id
   service_principal_client_secret = var.service_principal_client_secret
   load_balancer_sku               = var.load_balancer_sku
   network_plugin                  = var.network_plugin
   aks_sku                         = var.aks_sku
+  vnet_subnet_id                  = module.azure_vnet.subnet_id
 
 }
