@@ -7,7 +7,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
   dns_prefix              = "akscaltamirano"
   kubernetes_version      = var.kubernetes_version
   sku_tier                = var.aks_sku
-  private_cluster_enabled = true
+  private_cluster_enabled = var.private_cluster_enabled
   //api_server_authorized_ip_ranges = ""
 
   //node_resource_group = azurerm_resource_group.rg_aks.name

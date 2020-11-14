@@ -67,5 +67,5 @@ module "aks" {
   aks_sku                         = var.aks_sku
   vnet_subnet_id                  = module.azure_vnet.subnet_id
   kubernetes_version              = data.azurerm_kubernetes_service_versions.v16.latest_version
-
+  private_cluster_enabled         = var.aks_private_cluster_enabled
 }

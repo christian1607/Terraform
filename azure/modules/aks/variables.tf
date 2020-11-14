@@ -80,4 +80,10 @@ variable "kubernetes_version" {
   description = "kubernetes version tu use"
 }
 
+variable "private_cluster_enabled" {
+  type        = bool
+  default     = true
+  description = "Whether the aks apiserver is private or public (Default: true)"
+}
+
 

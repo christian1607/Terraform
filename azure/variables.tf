@@ -88,13 +88,13 @@ variable "tags" {
 
 variable "vnet_address_space" {
   type        = list(string)
-  default     =  ["10.0.0.0/16"]
+  default     = ["10.0.0.0/16"]
   description = "list of address prefixes fro vnet in CIDR format"
 }
 
 variable "subnet_address_prefixes" {
   type        = list(string)
-  default     =  ["10.0.0.0/24"]
+  default     = ["10.0.0.0/24"]
   description = "list of address prefixes for subnets in CIDR format"
 }
 
@@ -110,5 +110,11 @@ variable "vnet_name" {
   description = "vnet name"
 }
 
+
+variable "aks_private_cluster_enabled" {
+  type        = bool
+  default     = true
+  description = "Whether the aks apiserver is private or public (Default: true)"
+}
 
 
