@@ -17,6 +17,12 @@ provider "azurerm" {
 }
 
 
+data "azurerm_kubernetes_service_versions" "v16" {
+  location        = var.location
+  version_prefix  = "1.16"
+  include_preview = false
+}
+
 module "azure_resource_group" {
   source = "./modules/resource_group"
 
@@ -47,6 +53,7 @@ module "aks" {
 
   source = "./modules/aks"
 
+
   rg_aks_name                     = var.resources_group_name
   location                        = var.location
   node_pool_node_count            = var.node_pool_node_count
@@ -58,5 +65,6 @@ module "aks" {
   network_plugin                  = var.network_plugin
   aks_sku                         = var.aks_sku
   vnet_subnet_id                  = module.azure_vnet.subnet_id
+  kubernetes_version              = data.azurerm_kubernetes_service_versions.v16.latest_version
 
 }

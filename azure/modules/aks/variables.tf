@@ -74,3 +74,10 @@ variable "vnet_subnet_id" {
   description = "subnet id  that aks nodepool will use to assign pods ip"
 }
 
+variable "kubernetes_version" {
+  type        = string
+  default     = null
+  description = "kubernetes version tu use"
+}
+
+

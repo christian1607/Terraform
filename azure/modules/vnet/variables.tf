@@ -27,5 +27,9 @@ variable "subnet_name" {
   default     = "sn-001"
   description = "Subnet name"
 }
-
+variable "vnet_name" {
+  type        = string
+  default     = "vnet-001"
+  description = "Subnet name"
+}
 

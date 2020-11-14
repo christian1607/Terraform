@@ -1,15 +1,11 @@
-data "azurerm_kubernetes_service_versions" "v16" {
-  location        = var.location
-  version_prefix  = "1.16"
-  include_preview = false
-}
+
 
 resource "azurerm_kubernetes_cluster" "aks" {
   name                    = "aks-terraform-personal-001"
   location                = var.location
   resource_group_name     = var.rg_aks_name
   dns_prefix              = "akscaltamirano"
-  kubernetes_version      = data.azurerm_kubernetes_service_versions.v16.latest_version
+  kubernetes_version      = var.kubernetes_version
   sku_tier                = var.aks_sku
   private_cluster_enabled = true
   //api_server_authorized_ip_ranges = ""
