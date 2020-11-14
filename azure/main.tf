@@ -55,7 +55,7 @@ module "aks" {
   source = "./modules/aks"
 
 
-  rg_aks_name                     = var.resources_group_name
+  rg_aks_name                     = module.azure_resource_group.rg_name
   location                        = var.location
   node_pool_node_count            = var.node_pool_node_count
   node_vm_size                    = var.node_vm_size
