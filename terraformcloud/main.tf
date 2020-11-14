@@ -90,7 +90,6 @@ resource "tfe_variable" "service_principal_client_secret" {
   value     = var.service_principal_client_secret
   category  = "terraform"
   sensitive = true
-
   workspace_id = tfe_workspace.azure.id
   description  = "aks cliente secret"
 }
@@ -105,7 +104,7 @@ resource "tfe_variable" "load_balancer_sku" {
 
 resource "tfe_variable" "network_plugin" {
   key          = "network_plugin"
-  value        = "kubenet"
+  value        = "azure"
   category     = "terraform"
   workspace_id = tfe_workspace.azure.id
   description  = "type of network plugin (azure|kubenet)"
@@ -140,7 +139,7 @@ resource "tfe_variable" "resources_group_name" {
   value        = "rg-terraform-personal-001"
   category     = "terraform"
   workspace_id = tfe_workspace.azure.id
-  description  = "Aks SKU (Free|Paid)"
+  description  = "resource group name"
 }
 
 resource "tfe_variable" "tags" {
@@ -154,7 +153,6 @@ resource "tfe_variable" "tags" {
   hcl          = true
   category     = "terraform"
   workspace_id = tfe_workspace.azure.id
-  description  = "Aks SKU (Free|Paid)"
 }
 
 
