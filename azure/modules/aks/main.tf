@@ -30,8 +30,8 @@ resource "azurerm_kubernetes_cluster" "aks" {
 
   network_profile {
     network_plugin = var.network_plugin
-    //network_policy    = "azure"
-    pod_cidr           = "40.0.0.0/20"
+    network_policy    = "azure"
+    pod_cidr           = var.network_plugin=="azure"?null:"40.0.0.0/20"
     service_cidr       = "20.0.0.0/20"
     docker_bridge_cidr = "172.0.0.1/20"
     dns_service_ip     = "20.0.0.10"
