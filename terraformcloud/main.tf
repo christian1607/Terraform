@@ -119,6 +119,46 @@ resource "tfe_variable" "aks_sku" {
   description  = "Aks SKU (Free|Paid)"
 }
 
+resource "tfe_variable" "vnet_name" {
+  key          = "vnet_name"
+  value        = "vnet-aks-personal-001"
+  category     = "terraform"
+  workspace_id = tfe_workspace.azure.id
+}
+
+resource "tfe_variable" "subnet_name" {
+  key          = "subnet_name"
+  value        = "sn-aks-personal-001"
+  category     = "terraform"
+  workspace_id = tfe_workspace.azure.id
+  description  = "Aks SKU (Free|Paid)"
+}
+
+
+resource "tfe_variable" "resources_group_name" {
+  key          = "resources_group_name"
+  value        = "rg-terraform-personal-001"
+  category     = "terraform"
+  workspace_id = tfe_workspace.azure.id
+  description  = "Aks SKU (Free|Paid)"
+}
+
+resource "tfe_variable" "tags" {
+  key          = "tags"
+  value        = {
+    Project = "Azure Terraform - caltamirano" 
+    CostCenter = "caltamirano" 
+    Owner = "Christian Altamirano" 
+    Suscription = "Personal"
+  }
+  hcl          = true
+  category     = "terraform"
+  workspace_id = tfe_workspace.azure.id
+  description  = "Aks SKU (Free|Paid)"
+}
+
+
+
 
 resource "tfe_variable" "arm_client_id" {
   key          = "ARM_CLIENT_ID"
