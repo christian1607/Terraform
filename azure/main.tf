@@ -38,8 +38,9 @@ module "azure_vnet" {
   source = "./modules/vnet"
 
   location                = var.location
-  resource_group_name    = var.resources_group_name
-  subnet_name = var.subnet_name
+  resource_group_name     = var.resources_group_name
+  subnet_name             = var.subnet_name
+  vnet_name               = var.vnet_name
   vnet_address_space      = var.vnet_address_space
   subnet_address_prefixes = var.subnet_address_prefixes
 
