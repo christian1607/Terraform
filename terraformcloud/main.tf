@@ -118,6 +118,15 @@ resource "tfe_variable" "aks_sku" {
   description  = "Aks SKU (Free|Paid)"
 }
 
+resource "tfe_variable" "aks_private_cluster_enabled" {
+  key          = "aks_private_cluster_enabled"
+  value        = false
+  category     = "terraform"
+  workspace_id = tfe_workspace.azure.id
+  description  = "Whether the aks apiserver is private or public (Default: true)"
+}
+
+
 resource "tfe_variable" "vnet_name" {
   key          = "vnet_name"
   value        = "vnet-aks-personal-001"
