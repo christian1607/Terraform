@@ -1,4 +1,4 @@
-resource "azurerm_key_vault_access_policy" "example" {
+resource "azurerm_key_vault_access_policy" "policy" {
   
   key_vault_id = var.kv_vault_id
   tenant_id = var.kv_tenant_id
