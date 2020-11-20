@@ -9,7 +9,7 @@ module "key_vault_resource_group" {
 
   location            = var.location
   project             = var.project
-  resource_group_name = "rg-caltamirano-keyvault-001"
+  resource_group_name = "rg-caltamirano-keyvault-002"
   tags                = var.tags
 
 }
@@ -41,70 +41,10 @@ module "keyvault_policy" {
   kv_vault_id                = module.keyvault.id
   kv_tenant_id               = data.azurerm_client_config.current.tenant_id
   kv_object_id               = data.azurerm_client_config.current.object_id
-  kv_key_permissions         = [
-    "backup", 
-    "create", 
-    "decrypt", 
-    "delete", 
-    "encrypt", 
-    "get", 
-    "import", 
-    "list", 
-    "purge", 
-    "recover", 
-    "restore",
-    "sign", 
-    "unwrapKey", 
-    "update", 
-    "verify", 
-    "wrapKey",
-  ]
-  kv_secret_permissions      = [
-     "backup", 
-    "delete", 
-    "get", 
-    "list", 
-    "purge", 
-    "recover", 
-    "restore", 
-    "set",
-    
-   
-  ]
-  kv_certificate_permissions = [
-    "backup", 
-    "create", 
-    "delete", 
-    "deleteissuers", 
-    "get", 
-    "getissuers", 
-    "import", 
-    "list", 
-    "listissuers", 
-    "managecontacts", 
-    "manageissuers", 
-    "purge", 
-    "recover", 
-    "restore", 
-    "setissuers", 
-    "update",
-  ]
-  kv_storage_permissions     = [
-    "backup", 
-    "delete", 
-    "deletesas", 
-    "get", 
-    "getsas", 
-    "list", 
-    "listsas", 
-    "purge", 
-    "recover", 
-    "regeneratekey",
-    "restore", 
-    "set", 
-    "setsas", 
-    "update",
-  ]
+  kv_key_permissions         = ["backup", "create", "decrypt", "delete", "encrypt","get","import","list","purge","recover","restore","sign","unwrapKey","update","verify","wrapKey",]
+  kv_secret_permissions      = ["backup", "delete", "get", "list", "purge", "recover", "restore","set",]
+  kv_certificate_permissions = ["backup", "create", "delete", "deleteissuers", "get", "getissuers", "import", "list","listissuers", "managecontacts", "manageissuers", "purge","recover", "restore","setissuers","update",]
+  kv_storage_permissions     = ["backup", "delete", "deletesas", "get", "getsas", "list", "listsas", "purge", "recover", "regeneratekey", "restore", "set", "setsas", "update",]
 
 }
 
