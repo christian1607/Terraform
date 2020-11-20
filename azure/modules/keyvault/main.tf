@@ -9,5 +9,13 @@ resource "azurerm_key_vault" "keyvault" {
   purge_protection_enabled    = var.kv_purge_protection
   sku_name                    = var.kv_sku
 
+  network_acls {
+    bypass = var.kv_bypass
+    default_action = var.kv_default_action
+    ip_rules = var.kv_ip_rules
+    virtual_network_subnet_ids = var.kv_virtual_network_subnet_ids
+  }
+
   tags = var.tags
 }
+

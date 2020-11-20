@@ -58,6 +58,32 @@ variable "kv_sku" {
   description = "Sku tier (standard|premium)"
 }
 
+variable "kv_bypass" {
+  type        = string
+  default     = "Specifies which traffic can bypass the network rules. Possible values are AzureServices and None"
+  description = "A)"
+}
+
+variable "kv_default_action" {
+  type        = string
+  default     = "Deny"
+  description = "The Default Action to use when no rules match from ip_rules / virtual_network_subnet_ids. Possible values are Allow and Deny"
+}
+
+
+variable "kv_ip_rules" {
+  type        = list(string)
+  default     = []
+  description = "One or more IP Addresses, or CIDR Blocks which should be able to access the Key Vault."
+}
+
+
+variable "kv_virtual_network_subnet_ids" {
+  type        = list(string)
+  default     = []
+  description = "One or more Subnet ID's which should be able to access this Key Vault."
+}
+
 
 variable "tags" {
   type        = map(string)
