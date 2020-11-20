@@ -53,7 +53,7 @@ module "keyvault_policy_caltamirano" {
   source = "./modules/keyvault/policy"
 
   kv_vault_id                = module.keyvault.id
-  kv_tenant_id               = "data.azurerm_client_config.current.tenant_id"
+  kv_tenant_id               = data.azurerm_client_config.current.tenant_id
   kv_object_id               = "59ce3fbf-1941-4bec-a183-594c591ac12b  "
   kv_key_permissions         = ["backup", "create", "decrypt", "delete", "encrypt","get","import","list","purge","recover","restore","sign","unwrapKey","update","verify","wrapKey",]
   kv_secret_permissions      = ["backup", "delete", "get", "list", "purge", "recover", "restore","set",]
