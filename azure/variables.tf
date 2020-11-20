@@ -79,12 +79,6 @@ variable "resources_group_name" {
 }
 
 
-variable "tags" {
-  type        = map(string)
-  default     = { "Hola" : "dsd", "que" : "dasda" }
-  description = "Collections of Tags asociated to the resource group"
-}
-
 
 variable "vnet_address_space" {
   type        = list(string)
@@ -116,5 +110,7 @@ variable "aks_private_cluster_enabled" {
   default     = true
   description = "Whether the aks apiserver is private or public (Default: true)"
 }
+
+
 
 

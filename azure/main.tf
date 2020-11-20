@@ -11,61 +11,7 @@ terraform {
 
 provider "azurerm" {
 
-  environment = "public"
   features {}
 
 }
 
-
-data "azurerm_kubernetes_service_versions" "v16" {
-  location        = var.location
-  version_prefix  = "1.16"
-  include_preview = false
-}
-
-module "azure_resource_group" {
-  source = "./modules/resource_group"
-
-  location            = var.location
-  project             = var.project
-  resource_group_name = var.resources_group_name
-  tags                = var.tags
-
-}
-
-
-module "azure_vnet" {
-  source = "./modules/vnet"
-
-  location                = var.location
-  resource_group_name     = var.resources_group_name
-  subnet_name             = var.subnet_name
-  vnet_name               = var.vnet_name
-  vnet_address_space      = var.vnet_address_space
-  subnet_address_prefixes = var.subnet_address_prefixes
-
-}
-
-
-
-
-
-module "aks" {
-
-  source = "./modules/aks"
-
-
-  rg_aks_name                     = module.azure_resource_group.rg_name
-  location                        = var.location
-  node_pool_node_count            = var.node_pool_node_count
-  node_vm_size                    = var.node_vm_size
-  max_pods_per_node               = var.max_pods_per_node
-  service_principal_client_id     = var.service_principal_client_id
-  service_principal_client_secret = var.service_principal_client_secret
-  load_balancer_sku               = var.load_balancer_sku
-  network_plugin                  = var.network_plugin
-  aks_sku                         = var.aks_sku
-  vnet_subnet_id                  = module.azure_vnet.subnet_id
-  kubernetes_version              = data.azurerm_kubernetes_service_versions.v16.latest_version
-  private_cluster_enabled         = var.aks_private_cluster_enabled
-}
