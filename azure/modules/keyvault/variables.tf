@@ -60,8 +60,8 @@ variable "kv_sku" {
 
 variable "kv_bypass" {
   type        = string
-  default     = "Specifies which traffic can bypass the network rules. Possible values are AzureServices and None"
-  description = "A)"
+  default     = "None"
+  description = "Specifies which traffic can bypass the network rules. Possible values are AzureServices and None"
 }
 
 variable "kv_default_action" {
