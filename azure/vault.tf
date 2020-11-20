@@ -18,29 +18,31 @@ module "key_vault_resource_group" {
 module "azure_vnet" {
   source = "./modules/vnet"
 
-  location                = var.location
-  resource_group_name     = module.key_vault_resource_group.rg_name
-  vnet_name               = "vnet-caltamirano-personal-001"
-  vnet_address_space      = ["10.0.0.0/16"]
-
+  location            = var.location
+  resource_group_name = module.key_vault_resource_group.rg_name
+  vnet_name           = "vnet-caltamirano-personal-001"
+  vnet_address_space  = ["10.0.0.0/16"]
 }
 
 module "azure_vnet_subnet_1" {
   source = "./modules/vnet/subnet"
 
-  resource_group_name     = module.key_vault_resource_group.rg_name
-  subnet_name             = "sn-caltamirano-personal-001"
-  vnet_name               = module.azure_vnet.name
-  subnet_address_prefixes = ["10.0.0.0/24"]
+  resource_group_name      = module.key_vault_resource_group.rg_name
+  subnet_name              = "sn-caltamirano-personal-001"
+  vnet_name                = module.azure_vnet.name
+  subnet_address_prefixes  = ["10.0.0.0/24"]
+  subnet_service_endpoints = ["Microsoft.KeyVault"]
 }
 
 module "azure_vnet_subnet_2" {
   source = "./modules/vnet/subnet"
 
-  resource_group_name     = module.key_vault_resource_group.rg_name
-  subnet_name             = "sn-caltamirano-personal-002"
-  vnet_name               = module.azure_vnet.name
-  subnet_address_prefixes = ["10.0.1.0/24"]
+  resource_group_name      = module.key_vault_resource_group.rg_name
+  subnet_name              = "sn-caltamirano-personal-002"
+  vnet_name                = module.azure_vnet.name
+  subnet_address_prefixes  = ["10.0.1.0/24"]
+  subnet_service_endpoints = ["Microsoft.KeyVault"]
+
 }
 
 
@@ -67,7 +69,7 @@ module "keyvault" {
     module.azure_vnet_subnet_1.id,
     module.azure_vnet_subnet_2.id,
   ]
-  tags                      = var.tags
+  tags = var.tags
 
 }
 
@@ -79,10 +81,10 @@ module "keyvault_policy_current" {
   kv_vault_id                = module.keyvault.id
   kv_tenant_id               = data.azurerm_client_config.current.tenant_id
   kv_object_id               = data.azurerm_client_config.current.object_id
-  kv_key_permissions         = ["backup", "create", "decrypt", "delete", "encrypt","get","import","list","purge","recover","restore","sign","unwrapKey","update","verify","wrapKey",]
-  kv_secret_permissions      = ["backup", "delete", "get", "list", "purge", "recover", "restore","set",]
-  kv_certificate_permissions = ["backup", "create", "delete", "deleteissuers", "get", "getissuers", "import", "list","listissuers", "managecontacts", "manageissuers", "purge","recover", "restore","setissuers","update",]
-  kv_storage_permissions     = ["backup", "delete", "deletesas", "get", "getsas", "list", "listsas", "purge", "recover", "regeneratekey", "restore", "set", "setsas", "update",]
+  kv_key_permissions         = ["backup", "create", "decrypt", "delete", "encrypt", "get", "import", "list", "purge", "recover", "restore", "sign", "unwrapKey", "update", "verify", "wrapKey", ]
+  kv_secret_permissions      = ["backup", "delete", "get", "list", "purge", "recover", "restore", "set", ]
+  kv_certificate_permissions = ["backup", "create", "delete", "deleteissuers", "get", "getissuers", "import", "list", "listissuers", "managecontacts", "manageissuers", "purge", "recover", "restore", "setissuers", "update", ]
+  kv_storage_permissions     = ["backup", "delete", "deletesas", "get", "getsas", "list", "listsas", "purge", "recover", "regeneratekey", "restore", "set", "setsas", "update", ]
 
 }
 
@@ -93,10 +95,10 @@ module "keyvault_policy_caltamirano" {
   kv_vault_id                = module.keyvault.id
   kv_tenant_id               = data.azurerm_client_config.current.tenant_id
   kv_object_id               = "59ce3fbf-1941-4bec-a183-594c591ac12b"
-  kv_key_permissions         = ["backup", "create", "decrypt", "delete", "encrypt","get","import","list","purge","recover","restore","sign","unwrapKey","update","verify","wrapKey",]
-  kv_secret_permissions      = ["backup", "delete", "get", "list", "purge", "recover", "restore","set",]
-  kv_certificate_permissions = ["backup", "create", "delete", "deleteissuers", "get", "getissuers", "import", "list","listissuers", "managecontacts", "manageissuers", "purge","recover", "restore","setissuers","update",]
-  kv_storage_permissions     = ["backup", "delete", "deletesas", "get", "getsas", "list", "listsas", "purge", "recover", "regeneratekey", "restore", "set", "setsas", "update",]
+  kv_key_permissions         = ["backup", "create", "decrypt", "delete", "encrypt", "get", "import", "list", "purge", "recover", "restore", "sign", "unwrapKey", "update", "verify", "wrapKey", ]
+  kv_secret_permissions      = ["backup", "delete", "get", "list", "purge", "recover", "restore", "set", ]
+  kv_certificate_permissions = ["backup", "create", "delete", "deleteissuers", "get", "getissuers", "import", "list", "listissuers", "managecontacts", "manageissuers", "purge", "recover", "restore", "setissuers", "update", ]
+  kv_storage_permissions     = ["backup", "delete", "deletesas", "get", "getsas", "list", "listsas", "purge", "recover", "regeneratekey", "restore", "set", "setsas", "update", ]
 
 }
 

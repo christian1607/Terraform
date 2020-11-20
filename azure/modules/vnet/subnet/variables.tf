@@ -23,3 +23,9 @@ variable "vnet_name" {
   description = "Subnet name"
 }
 
+variable "subnet_service_endpoints" {
+  type        = list(string)
+  default     = []
+  description = "Service endpoint asociated with the subnet"
+}
+
