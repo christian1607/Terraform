@@ -15,6 +15,40 @@ module "key_vault_resource_group" {
 }
 
 
+module "azure_vnet" {
+  source = "./modules/vnet"
+
+  location                = var.location
+  resource_group_name     = var.resources_group_name
+  vnet_name               = "vnet-caltamirano-personal-001"
+  vnet_address_space      = ["10.0.0.0/16"]
+
+}
+
+module "azure_vnet_subnet_1" {
+  source = "./modules/vnet/subnet"
+
+  resource_group_name     = var.resources_group_name
+  subnet_name             = "sn-caltamirano-personal-001"
+  vnet_name               = module.azure_vnet.name
+  subnet_address_prefixes = ["10.0.0.0/24"]
+}
+
+module "azure_vnet_subnet_2" {
+  source = "./modules/vnet/subnet"
+
+  resource_group_name     = var.resources_group_name
+  subnet_name             = "sn-caltamirano-personal-002"
+  vnet_name               = module.azure_vnet.name
+  subnet_address_prefixes = ["10.0.1.0/24"]
+}
+
+
+
+
+
+
+
 
 module "keyvault" {
 
@@ -29,6 +63,10 @@ module "keyvault" {
   kv_retention_days         = var.kv_retention_days
   kv_purge_protection       = var.kv_purge_protection
   kv_sku                    = var.kv_sku
+  kv_virtual_network_subnet_ids = [
+    module.azure_vnet_subnet_1.id,
+    module.azure_vnet_subnet_2.id,
+  ]
   tags                      = var.tags
 
 }
