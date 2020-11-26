@@ -24,6 +24,7 @@ resource "azurerm_cosmosdb_account" "db" {
     }
   }
 
+  is_virtual_network_filter_enabled = var.cosmosdb_is_virtual_network_filter_enabled
   dynamic "virtual_network_rule" {
 
     for_each = var.cosmosdb_virtual_network_rule

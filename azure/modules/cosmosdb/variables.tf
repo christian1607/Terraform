@@ -78,6 +78,10 @@ variable "cosmosdb_enable_multiple_write_locations" {
 }
 
 
+variable "cosmosdb_is_virtual_network_filter_enabled" {
+  type        = bool
+  default     = false
+}
 
 variable "cosmosdb_virtual_network_rule" {
   type        = list(object({
@@ -88,3 +92,4 @@ variable "cosmosdb_virtual_network_rule" {
   default     = []
   description = "CosmosDB geo locations configurations"
 }
+

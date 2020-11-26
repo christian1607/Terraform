@@ -37,6 +37,7 @@ module "cosmosdb" {
     }
   ]
 
+  cosmosdb_is_virtual_network_filter_enabled = true
   cosmosdb_virtual_network_rule = [ 
     {
       id= module.azure_vnet_subnet_1.id,
