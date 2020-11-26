@@ -18,6 +18,7 @@ resource "azurerm_cosmosdb_account" "db" {
 
     for_each = var.cosmosdb_geo_locations
     content {
+      prefix = geo_location.value["prefix"]
       location = geo_location.value["location"]
       failover_priority = geo_location.value["failover_priority"]
       zone_redundant = geo_location.value["zone_redundant"]

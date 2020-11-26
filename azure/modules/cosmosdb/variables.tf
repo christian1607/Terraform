@@ -57,6 +57,7 @@ variable "cosmosdb_policy_max_staleness_prefix" {
 
 variable "cosmosdb_geo_locations" {
   type        = list(object({
+    prefix        = string
     location              = string
     failover_priority      = number
     zone_redundant = bool

@@ -24,7 +24,14 @@ module "cosmosdb" {
   cosmosdb_policy_consistency_level = "Eventual"
   cosmosdb_enable_multiple_write_locations =true
   
- 
+  cosmosdb_geo_locations = [ 
+    {
+      prefix  = "cosmoscaltamirano"
+      location= "East US",
+      failover_priority = 0,
+      zone_redundant = false 
+    }
+  ]
 
 /*
   cosmosdb_geo_locations = [ 
@@ -113,6 +120,7 @@ variable "cosmosdb_policy_max_staleness_prefix" {
 
 variable "cosmosdb_geo_locations" {
   type        = list(object({
+    prefix        = string
     location              = string
     failover_priority      = number
     zone_redundant = bool
