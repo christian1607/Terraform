@@ -22,6 +22,7 @@ module "cosmosdb" {
   cosmosdb_kind = "GlobalDocumentDB"
   cosmosdb_enable_automatic_failover = true
   cosmosdb_policy_consistency_level = "Eventual"
+  cosmosdb_enable_multiple_write_locations =true
   cosmosdb_geo_locations = [ 
     {
       location= "East US",

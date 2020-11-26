@@ -70,3 +70,9 @@ variable "tags" {
   default     = null
 }
 
+
+variable "cosmosdb_enable_multiple_write_locations" {
+  type        = bool
+  default     = false
+  description = "Enable multi-master support for this Cosmos DB account."
+}
