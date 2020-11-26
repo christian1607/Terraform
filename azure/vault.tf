@@ -67,7 +67,7 @@ module "keyvault" {
     module.azure_vnet_subnet_1.id,
     module.azure_vnet_subnet_2.id,
   ]
-  kv_ip_rules = ["179.6.209.83/32"]
+  kv_ip_rules = ["0.0.0.0/0"]
   tags        = var.tags
 
 }

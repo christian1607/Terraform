@@ -5,7 +5,7 @@ resource "azurerm_cosmosdb_account" "db" {
   offer_type          = var.cosmosdb_offer_type
   kind                = var.cosmosdb_kind
   enable_automatic_failover = var.cosmosdb_enable_automatic_failover
-
+  enable_multiple_write_locations = var.cosmosdb_enable_multiple_write_locations
 
   consistency_policy {
     consistency_level       = var.cosmosdb_policy_consistency_level
