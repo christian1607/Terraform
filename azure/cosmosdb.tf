@@ -28,7 +28,7 @@ module "cosmosdb" {
     {
       location= "East US",
       failover_priority = 0,
-      zone_redundant = true 
+      zone_redundant = false 
     }
   ]
 
