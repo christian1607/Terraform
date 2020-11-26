@@ -39,11 +39,11 @@ module "cosmosdb" {
 
   cosmosdb_virtual_network_rule = [ 
     {
-      id= module.azure_vnet_subnet_1.data.id,
+      id= module.azure_vnet_subnet_1.id,
       ignore_missing_vnet_service_endpoint = true
     },
     { 
-      id= module.azure_vnet_subnet_2.data.id,
+      id= module.azure_vnet_subnet_2.id,
       ignore_missing_vnet_service_endpoint = false
     }
   ]
