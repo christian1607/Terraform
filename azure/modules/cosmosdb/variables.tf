@@ -76,3 +76,15 @@ variable "cosmosdb_enable_multiple_write_locations" {
   default     = false
   description = "Enable multi-master support for this Cosmos DB account."
 }
+
+
+
+variable "cosmosdb_virtual_network_rule" {
+  type        = list(object({
+    id              = string
+    ignore_missing_vnet_service_endpoint      = bool
+  }))
+
+  default     = []
+  description = "CosmosDB geo locations configurations"
+}

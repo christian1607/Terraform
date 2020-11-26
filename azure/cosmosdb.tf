@@ -23,6 +23,7 @@ module "cosmosdb" {
   cosmosdb_enable_automatic_failover = true
   cosmosdb_policy_consistency_level = "Eventual"
   cosmosdb_enable_multiple_write_locations =true
+  
   cosmosdb_geo_locations = [ 
     {
       location= "East US",
@@ -33,6 +34,17 @@ module "cosmosdb" {
       location= "West US",
       failover_priority = 1,
       zone_redundant = false 
+    }
+  ]
+
+  cosmosdb_virtual_network_rule = [ 
+    {
+      id= module.azure_vnet_subnet_1.data.id,
+      ignore_missing_vnet_service_endpoint = true
+    },
+    { 
+      id= module.azure_vnet_subnet_2.data.id,
+      ignore_missing_vnet_service_endpoint = false
     }
   ]
 }

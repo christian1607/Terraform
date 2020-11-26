@@ -24,5 +24,8 @@ resource "azurerm_cosmosdb_account" "db" {
     }
   }
 
+
+  virtual_network_rule = var.cosmosdb_virtual_network_rule
+
   tags = var.tags
 }
