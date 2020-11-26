@@ -5,13 +5,13 @@ variable "kv_vault_id" {
   description = "keyvault id to be applied the policy you will create"
 }
 
- variable "kv_tenant_id" {
+variable "kv_tenant_id" {
   type        = string
   default     = null
   description = "Network plugin to use for networking (azure|kubenet) (For production should be Azure CNI)"
 }
 
- variable "kv_object_id" {
+variable "kv_object_id" {
   type        = string
   default     = null
   description = "AAD object which the policy will be applied"

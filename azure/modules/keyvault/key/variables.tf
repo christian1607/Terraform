@@ -27,6 +27,6 @@ variable "kv_key_size" {
 
 variable "kv_key_opts" {
   type        = list(string)
-  default     = ["decrypt","encrypt","sign","unwrapKey","verify","wrapKey"]
+  default     = ["decrypt", "encrypt", "sign", "unwrapKey", "verify", "wrapKey"]
   description = "key options"
 }

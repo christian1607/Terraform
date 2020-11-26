@@ -27,10 +27,31 @@ variable "kv_enable_disk_encryption" {
 }
 
 
+variable "kv_enabled_for_template_deployment" {
+  type        = bool
+  default     = false
+  description = "whether Azure Resource Manager is permitted to retrieve secrets from the key vault."
+}
+
+
+variable "kv_enabled_for_deployment" {
+  type        = bool
+  default     = false
+  description = "Specifies whether Azure Virtual Machines are permitted to retrieve certificates stored as secrets from the key vault."
+}
+
+
+variable "kv_enable_rbac_authorization" {
+  type        = bool
+  default     = true
+  description = "Enable RBAC authorization"
+}
+
+
 variable "kv_tenant_id" {
   type        = string
   default     = null
-  description = "Network plugin to use for networking (azure|kubenet) (For production should be Azure CNI)"
+  description = "AAD Tenant Id where vault will be deployed"
 }
 
 
