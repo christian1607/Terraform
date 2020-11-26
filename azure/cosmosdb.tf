@@ -29,6 +29,15 @@ module "cosmosdb" {
       location= "East US",
       failover_priority = 0,
       zone_redundant = true 
+    }
+  ]
+
+/*
+  cosmosdb_geo_locations = [ 
+    {
+      location= "East US",
+      failover_priority = 0,
+      zone_redundant = true 
     },
     { 
       location= "West US",
@@ -36,7 +45,7 @@ module "cosmosdb" {
       zone_redundant = false 
     }
   ]
-
+*/
   cosmosdb_is_virtual_network_filter_enabled = true
   cosmosdb_virtual_network_rule = [ 
     {
