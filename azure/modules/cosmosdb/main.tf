@@ -35,5 +35,7 @@ resource "azurerm_cosmosdb_account" "db" {
     }
   }
 
+  ip_range_filter = var.cosmosdb_ip_range_filter
+
   tags = var.tags
 }

@@ -94,3 +94,9 @@ variable "cosmosdb_virtual_network_rule" {
   description = "CosmosDB geo locations configurations"
 }
 
+
+variable "cosmosdb_ip_range_filter" {
+  type        = list(string)
+  default     = null
+}
+
