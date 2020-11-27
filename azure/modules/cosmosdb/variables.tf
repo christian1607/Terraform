@@ -96,7 +96,7 @@ variable "cosmosdb_virtual_network_rule" {
 
 
 variable "cosmosdb_ip_range_filter" {
-  type        = list(string)
+  type        = string
   default     = null
 }
 
