@@ -41,9 +41,9 @@ module "cosmosdb" {
     }
   ]
 
-  cosmosdb_is_virtual_network_filter_enabled = false
-  cosmosdb_virtual_network_rule = [] 
-  /*cosmosdb_virtual_network_rule = [ 
+  cosmosdb_is_virtual_network_filter_enabled = true
+  //cosmosdb_virtual_network_rule = [] 
+  cosmosdb_virtual_network_rule = [ 
     {
       id= module.azure_vnet_subnet_1.id,
       ignore_missing_vnet_service_endpoint = true
@@ -52,7 +52,7 @@ module "cosmosdb" {
       id= module.azure_vnet_subnet_2.id,
       ignore_missing_vnet_service_endpoint = false
     }
-  ]*/
+  ]
 }
 
 
