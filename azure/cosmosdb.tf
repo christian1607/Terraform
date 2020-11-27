@@ -22,8 +22,9 @@ module "cosmosdb" {
   cosmosdb_kind = "GlobalDocumentDB"
   cosmosdb_enable_automatic_failover = true
   cosmosdb_policy_consistency_level = "Eventual"
-  cosmosdb_enable_multiple_write_locations =true
   
+  
+  cosmosdb_enable_multiple_write_locations =true
   cosmosdb_geo_locations = [ 
     {
       prefix  = "cosmoscaltamirano"
@@ -47,7 +48,7 @@ module "cosmosdb" {
     }
   ]
 */
-  cosmosdb_is_virtual_network_filter_enabled = true
+  cosmosdb_is_virtual_network_filter_enabled = false
   cosmosdb_virtual_network_rule = [ 
     {
       id= module.azure_vnet_subnet_1.id,
