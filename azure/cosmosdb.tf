@@ -24,14 +24,8 @@ module "cosmosdb" {
   cosmosdb_policy_consistency_level = "Eventual"
   
   
-  cosmosdb_enable_multiple_write_locations =true
+  cosmosdb_enable_multiple_write_locations =false
   cosmosdb_geo_locations = [ 
-    {
-      prefix  = "cosmoscaltamirano"
-      location= "East US",
-      failover_priority = 0,
-      zone_redundant = false 
-    }
   ]
 
 /*
