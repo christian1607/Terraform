@@ -36,7 +36,7 @@ module "azure_vnet_subnet_2" {
   subnet_name              = "sn-caltamirano-personal-002"
   vnet_name                = module.azure_vnet.name
   subnet_address_prefixes  = ["10.0.1.0/24"]
-  subnet_service_endpoints = ["Microsoft.KeyVault"]
+  subnet_service_endpoints = ["Microsoft.KeyVault","Microsoft.AzureCosmosDB"]
 
 }
 
