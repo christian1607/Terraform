@@ -31,7 +31,7 @@ module "cosmosdb" {
       prefix="cosmos-eastus"
       location= "East US",
       failover_priority = 0,
-      zone_redundant = false 
+      zone_redundant = true 
     },
     { 
       prefix="cosmos-westus"
