@@ -38,12 +38,6 @@ module "cosmosdb" {
       location= "West US",
       failover_priority = 1,
       zone_redundant = false 
-    },
-    { 
-      prefix="cosmos-centralusnew"
-      location= "Central US",
-      failover_priority = 2,
-      zone_redundant = true 
     }
   ]
 
