@@ -43,7 +43,7 @@ module "cosmosdb" {
       prefix="cosmos-centralus"
       location= "Central US",
       failover_priority = 2,
-      zone_redundant = true 
+      zone_redundant = false 
     }
   ]
 
