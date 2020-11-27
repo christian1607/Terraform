@@ -39,6 +39,12 @@ module "cosmosdb" {
       failover_priority = 1,
       zone_redundant = true 
     }
+     { 
+      prefix="cosmos-centralus"
+      location= "Central US",
+      failover_priority = 2,
+      zone_redundant = true 
+    }
   ]
 
   cosmosdb_is_virtual_network_filter_enabled = true
