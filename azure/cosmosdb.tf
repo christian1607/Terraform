@@ -28,11 +28,13 @@ module "cosmosdb" {
 
   cosmosdb_geo_locations = [ 
     {
+      prefix="cosmos-eastus"
       location= "East US",
       failover_priority = 0,
       zone_redundant = true 
     },
     { 
+      prefix="cosmos-westus"
       location= "West US",
       failover_priority = 1,
       zone_redundant = false 
