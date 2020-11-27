@@ -65,6 +65,23 @@ module "cosmosdb" {
 
 
 
+data "azurerm_cosmosdb_account" "cosmosdb" {
+  name                = "caltamirano-cosmos"
+  resource_group_name = module.cosmosdb_resource_group.rg_name
+}
+
+module "database_sample" {
+
+  source = "./modules/cosmosdb/database"
+
+  cosmosdb_db_name = "ventas"
+  cosmosdb_db_rg = module.cosmosdb_resource_group.rg_name
+  cosmosdb_db_account_name =  data.azurerm_cosmosdb_account.cosmosdb.name
+  cosmosdb_db_throughput = 400
+
+}
+
+
 
 variable "cosmosdb_name" {
   type        = string
