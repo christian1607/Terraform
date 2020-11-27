@@ -25,16 +25,7 @@ module "cosmosdb" {
   
   
   cosmosdb_enable_multiple_write_locations =false
-  cosmosdb_geo_locations = [ 
-    {
-      prefix  = "cosmoscaltamirano"
-      location= "East US",
-      failover_priority = 0,
-      zone_redundant = false 
-    }
-  ]
 
-/*
   cosmosdb_geo_locations = [ 
     {
       location= "East US",
@@ -47,7 +38,7 @@ module "cosmosdb" {
       zone_redundant = false 
     }
   ]
-*/
+
   cosmosdb_is_virtual_network_filter_enabled = false
   cosmosdb_virtual_network_rule = [] 
   /*cosmosdb_virtual_network_rule = [ 
