@@ -24,7 +24,7 @@ module "cosmosdb" {
   cosmosdb_policy_consistency_level = "Eventual"
   
   
-  cosmosdb_enable_multiple_write_locations =false
+  cosmosdb_enable_multiple_write_locations =true
 
   cosmosdb_geo_locations = [ 
     {
