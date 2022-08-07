@@ -11,15 +11,26 @@ jobs:
     name: terraform
     runs-on: ubuntu-20.04
     steps:
-      - name: checkout
+      - name: Checkout Repo
         uses: actions/checkout@v3
 
-      - uses: hashicorp/setup-terraform@v2
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.1.7
 
-      - run: terraform -chdir=aws init 
+      - name: Terraform Init
+        run: terraform -chdir=aws init 
         continue-on-error: false
+      
+      - name: Terraform Validate
+        id: validate
+        run: terraform -chdir=aws validate -no-color
 
-      - run: terraform -chdir=aws plan 
+      - name: Terraform Plan
+        run: terraform -chdir=aws plan 
         continue-on-error: false
+        env:
+          AWS_REGION:  ${{ secrets.AWS_REGION }}
+          AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
