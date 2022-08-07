@@ -3,7 +3,7 @@ on:
 
   push:
     paths:
-      - "aws"
+      - "aws/**"
     branches:
       - "master"
 jobs:
