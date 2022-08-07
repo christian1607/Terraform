@@ -16,7 +16,7 @@ jobs:
 
       - uses: hashicorp/setup-terraform@v2
 
-      - run: terraform init
+      - run: terraform init -chdir=aws
 
-      - run: terraform plan
+      - run: terraform plan -chdir=aws
   

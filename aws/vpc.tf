@@ -74,3 +74,4 @@ resource "aws_subnet" "sn-us-east-1b-private" {
         Owner = "${local.owner}"
     }
 }
+
