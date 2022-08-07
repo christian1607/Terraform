@@ -12,7 +12,6 @@ resource "aws_vpc" "vpc-us" {
         Project = "${local.project}"
     }
 }
-
 #Public subnet
 resource "aws_subnet" "sn-us-east-1a-public" {
   
