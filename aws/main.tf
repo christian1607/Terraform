@@ -14,6 +14,7 @@ terraform {
     workspaces {
       name = "aws"
     }
+    
   }
 }
 
