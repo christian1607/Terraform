@@ -7,6 +7,14 @@ terraform {
       version = "2.22.0"
     }
   }
+
+  cloud {
+    organization = "caltamirano"
+
+    workspaces {
+      name = "aws"
+    }
+  }
 }
 
 
