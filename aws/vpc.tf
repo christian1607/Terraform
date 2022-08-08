@@ -20,6 +20,7 @@ resource "aws_subnet" "sn-us-east-1a-public" {
     availability_zone = "us-east-1a"
     map_public_ip_on_launch = "true"
 
+
     tags = {
         Name = "sn-us-east-1a-public"
         Env  = "${local.enviroment}"
